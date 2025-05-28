@@ -14,6 +14,7 @@ public class Main {
 
     }
     public GameResult isComplete(Board board){
+
          if(board instanceof TicTacToeBoard)
          {
              TicTacToeBoard board1 = (TicTacToeBoard) board;

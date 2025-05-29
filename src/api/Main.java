@@ -1,6 +1,14 @@
+package api;
+
+import Game.Board;
+import Game.GameResult;
+import Game.Move;
+import Game.Player;
+import boards.TicTacToeBoard;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class GameEngine {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
@@ -10,7 +18,7 @@ public class Main {
     public Board start(){
         return new Board();
     }
-    public void move(Board board, Player player,Move move){
+    public void move(Board board, Player player, Move move){
 
     }
     public GameResult isComplete(Board board){
@@ -26,7 +34,7 @@ public class Main {
 
                  for(int j=0;j<3;j++)
                  {
-                     firstCharacter=board1.cells[i][0];
+                     firstCharacter=board1.getcells([i][0]);
                      if(!board1.cells[i][j].equals(firstCharacter)) {
                          rowComplete = false;
                          break;
@@ -92,24 +100,4 @@ public class Main {
          return new GameResult(false,"_");
     }
 }
-class Board {
 
-}
-class TicTacToeBoard extends Board {
-      String[][] cells=new String[3][3];
-}
-class Player {
-
-}
-class Move {
-
-}
-class GameResult{
-   boolean isOver;
-   String winner;
-
-    public GameResult(boolean isOver, String winner) {
-        this.isOver = isOver;
-        this.winner = winner;
-    }
-}

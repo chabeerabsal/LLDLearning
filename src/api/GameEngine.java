@@ -15,10 +15,20 @@ public class GameEngine {
 
     }
 
-    public Board start(){
-        return new Board();
-    }
+    public Board start(String type){
+        if(type.equals("Tic-Tac-Toe"))
+        {
+            return new TicTacToeBoard();
+        }
+        else{
+        throw new IllegalArgumentException();
+    }}
     public void move(Board board, Player player, Move move){
+        if(board instanceof TicTacToeBoard){
+            TicTacToeBoard board1 = (TicTacToeBoard) board;
+            board1.setCells(player.symbol(),move.getCells());
+
+        }
 
     }
     public GameResult isComplete(Board board){
@@ -34,8 +44,8 @@ public class GameEngine {
 
                  for(int j=0;j<3;j++)
                  {
-                     firstCharacter=board1.getcells([i][0]);
-                     if(!board1.cells[i][j].equals(firstCharacter)) {
+                     firstCharacter=board1.getcells(i,0);
+                     if(!board1.getcells(i,j).equals(firstCharacter)) {
                          rowComplete = false;
                          break;
                      }
@@ -47,8 +57,8 @@ public class GameEngine {
 
                  for(int j=0;j<3;j++)
                  {
-                     firstCharacter=board1.cells[0][i];
-                     if(!board1.cells[j][i].equals(firstCharacter)) {
+                     firstCharacter=board1.getcells(0,i);
+                     if(!board1.getcells(j,i).equals(firstCharacter)) {
                          colComplete = false;
                          break;
                      }
@@ -60,8 +70,8 @@ public class GameEngine {
 
                  for(int j=0;j<3;j++)
                  {
-                     firstCharacter=board1.cells[0][0];
-                     if(!board1.cells[i][i].equals(firstCharacter)) {
+                     firstCharacter=board1.getcells(0,0);
+                     if(!board1.getcells(i,i).equals(firstCharacter)) {
                          diagComplete = false;
                          break;
                      }
@@ -72,8 +82,8 @@ public class GameEngine {
 
                  for(int j=0;j<3;j++)
                  {
-                     firstCharacter=board1.cells[0][2];
-                     if(!board1.cells[i][2-i].equals(firstCharacter)) {
+                     firstCharacter=board1.getcells(0,2);
+                     if(!board1.getcells(i,2-i).equals(firstCharacter)) {
                          colComplete = false;
                          break;
                      }
@@ -86,7 +96,7 @@ public class GameEngine {
              {
                  for(int j=0;j<3;j++)
                  {
-                     if(board1.cells[i][j]!=null)
+                     if(board1.getcells(i,j)!=null)
                          count++;
 
                  }

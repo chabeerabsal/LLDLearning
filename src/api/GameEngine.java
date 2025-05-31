@@ -1,20 +1,11 @@
 package api;
 
-import Game.Board;
-import Game.GameResult;
-import Game.Move;
-import Game.Player;
+import Game.*;
 import boards.TicTacToeBoard;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class GameEngine {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-
-    }
-
     public Board start(String type){
         if(type.equals("Tic-Tac-Toe"))
         {
@@ -107,7 +98,27 @@ public class GameEngine {
                  return new GameResult(false,"_");
 
          }
+
+
          return new GameResult(false,"_");
+    }
+
+    public Move suggetMove(Player computer, Board board) {
+        if(board instanceof TicTacToeBoard)
+        {
+            TicTacToeBoard board1 = (TicTacToeBoard) board;
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                if(board1.getcells(i,j)!=null)
+                    return new Move(new Cells(i,j));
+
+            }
+        }
+        throw new IllegalStateException();
+    }
+        throw new IllegalArgumentException();
     }
 }
 

@@ -21,7 +21,10 @@ public class TicTacToeBoard extends Board {
         String result="";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                if(cells[i][j]!=null)
                 result+=cells[i][j];
+                else
+                    result+="_";
             }
             result+="\n";
         }

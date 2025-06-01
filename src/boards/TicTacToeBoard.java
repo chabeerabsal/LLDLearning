@@ -15,4 +15,16 @@ public class TicTacToeBoard extends Board {
     public void setCells(String symbol, Cells cell) {
                   cells[cell.getRow()][cell.getCol()]=symbol;
     }
+
+    @Override
+    public String toString() {
+        String result="";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                result+=cells[i][j];
+            }
+            result+="\n";
+        }
+        return result;
+    }
 }

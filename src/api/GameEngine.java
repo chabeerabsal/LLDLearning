@@ -29,59 +29,72 @@ public class GameEngine {
              TicTacToeBoard board1 = (TicTacToeBoard) board;
              boolean rowComplete=true;
              String firstCharacter="_";
-             for(int i=0;i<3;i++)
-             {
-                 rowComplete=true;
+             for(int i=0;i<3;i++) {
+                 firstCharacter = board1.getcells(i, 0);
+                 rowComplete = firstCharacter != null;
+                 if (firstCharacter != null) {
+                     for (int j = 1; j < 3; j++) {
 
-                 for(int j=0;j<3;j++)
-                 {
-                     firstCharacter=board1.getcells(i,0);
-                     if(!board1.getcells(i,j).equals(firstCharacter)) {
-                         rowComplete = false;
-                         break;
+                         if (!firstCharacter.equals(board1.getcells(i, j))) {
+                             rowComplete = false;
+                             break;
+                         }
                      }
                  }
+                 if (rowComplete) {
+                     break;
+                 }
+             }
                  if(rowComplete)
                      return new GameResult(true,firstCharacter);
 
                boolean  colComplete=true;
 
-                 for(int j=0;j<3;j++)
-                 {
-                     firstCharacter=board1.getcells(0,i);
-                     if(!board1.getcells(j,i).equals(firstCharacter)) {
-                         colComplete = false;
+                 for(int i=0;i<3;i++) {
+                     firstCharacter = board1.getcells(0, i);
+                     colComplete = firstCharacter != null;
+                     if (firstCharacter != null) {
+                         for (int j = 1; j < 3; j++) {
+                             if (!firstCharacter.equals(board1.getcells(j, i))) {
+                                 colComplete = false;
+                                 break;
+                             }
+                         }
+                     }
+                     if (colComplete) {
                          break;
                      }
                  }
                  if(colComplete)
                      return new GameResult(true,firstCharacter);
 
-                 boolean  diagComplete=true;
+                 firstCharacter=board1.getcells(0,0);
+                 boolean  diagComplete=firstCharacter!=null;
 
-                 for(int j=0;j<3;j++)
+                 for(int i=0;i<3;i++)
                  {
-                     firstCharacter=board1.getcells(0,0);
-                     if(!board1.getcells(i,i).equals(firstCharacter)) {
+
+                     if(firstCharacter != null&&!firstCharacter.equals(board1.getcells(i,i))) {
                          diagComplete = false;
                          break;
                      }
                  }
                  if(diagComplete)
                      return new GameResult(true,firstCharacter);
-                 boolean  revdiagComplete=true;
 
-                 for(int j=0;j<3;j++)
+                 firstCharacter=board1.getcells(0,2);
+                 boolean  revdiagComplete=firstCharacter!=null;
+                 for(int i=0;i<3;i++)
                  {
-                     firstCharacter=board1.getcells(0,2);
-                     if(!board1.getcells(i,2-i).equals(firstCharacter)) {
-                         colComplete = false;
+
+                     if(firstCharacter != null&&!firstCharacter.equals(board1.getcells(i,2-i))) {
+                         revdiagComplete = false;
                          break;
                      }
                  }
-                 if(colComplete)
+                 if(revdiagComplete)
                      return new GameResult(true,firstCharacter);
-             }
+
           int count=0;
              for(int i=0;i<3;i++)
              {
@@ -111,7 +124,7 @@ public class GameEngine {
         {
             for(int j=0;j<3;j++)
             {
-                if(board1.getcells(i,j)!=null)
+                if(board1.getcells(i,j)==null)
                     return new Move(new Cells(i,j));
 
             }

@@ -2,6 +2,7 @@ package boards;
 
 import Game.Board;
 import Game.Cells;
+import Game.Move;
 
 public class TicTacToeBoard extends Board {
     String[][] cells = new String[3][3];
@@ -29,5 +30,10 @@ public class TicTacToeBoard extends Board {
             result+="\n";
         }
         return result;
+    }
+
+    @Override
+    public void move(Move move) {
+        setCells(move.getPlayer().symbol(),move.getCells());
     }
 }

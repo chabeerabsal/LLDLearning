@@ -16,7 +16,7 @@ public class AiEngine {
                 for(int j=0;j<3;j++)
                 {
                     if(board1.getcells(i,j)==null)
-                        return new Move(new Cells(i,j));
+                        return new Move(new Cells(i,j),computer);
 
                 }
             }

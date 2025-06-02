@@ -22,7 +22,7 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             int row = sc.nextInt();
             int col = sc.nextInt();
-            Move oppMove = new Move(new Cells(row, col));
+            Move oppMove = new Move(new Cells(row, col),opponent);
             game.move(board, opponent, oppMove);
             System.out.println(board);
             if(!rule.isComplete(board).isOver()){

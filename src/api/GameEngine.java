@@ -16,6 +16,7 @@ public class GameEngine {
     }}
     public void move(Board board, Player player, Move move){
         if(board instanceof TicTacToeBoard){
+            board.move(move);
             TicTacToeBoard board1 = (TicTacToeBoard) board;
             board1.setCells(player.symbol(),move.getCells());
 

@@ -14,7 +14,8 @@ public class AiEngine {
             //simple move by computer
 
             Move suggestion=null;
-            if(isStarting(board1,4)) {
+            int threshold=3;
+            if(countMoves(board1)<threshold) {
                 suggestion=getBasicMove(board1, computer);
             }
             else{
@@ -47,8 +48,9 @@ public class AiEngine {
             for (int j = 0; j < 3; j++) {
                 if (board1.getcells(i, j) == null) {
                     Move move = new Move(new Cells(i, j), player.flip());
-                    board1.move(move);
-                    if (ruleEngine.isComplete(board1).isOver()) {
+                    TicTacToeBoard boardcopy=board1.copy();
+                    boardcopy.move(move);
+                    if (ruleEngine.isComplete(boardcopy).isOver()) {
                         return new Move(new Cells(i, j), player);
                     }
 
@@ -58,7 +60,7 @@ public class AiEngine {
        return getBasicMove(board1,player);
     }
 
-    private boolean isStarting(TicTacToeBoard board1, int threshold) {
+    private int countMoves(TicTacToeBoard board1) {
         int count=0;
         for(int i=0;i<3;i++)
         {
@@ -69,7 +71,7 @@ public class AiEngine {
 
             }
         }
-        return count<threshold;
+        return count;
 
     }
 

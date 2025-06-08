@@ -27,6 +27,7 @@ public class Main {
             System.out.println(board);
             if(!rule.isComplete(board).isOver()){
             Move computerMove = ai.suggetMove(computer, board);
+
             game.move(board, computer, computerMove);
         }
             System.out.println("Game Results:"+ rule.isComplete(board));

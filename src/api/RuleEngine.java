@@ -10,46 +10,45 @@ public class RuleEngine {
         if(board instanceof TicTacToeBoard)
         {
             TicTacToeBoard board1 = (TicTacToeBoard) board;
-            boolean rowComplete=true;
+            boolean someOneIsVictorious=true;
             String firstCharacter="_";
             for(int i=0;i<3;i++) {
                 firstCharacter = board1.getcells(i, 0);
-                rowComplete = firstCharacter != null;
+                someOneIsVictorious = firstCharacter != null;
                 if (firstCharacter != null) {
                     for (int j = 1; j < 3; j++) {
 
                         if (!firstCharacter.equals(board1.getcells(i, j))) {
-                            rowComplete = false;
+                            someOneIsVictorious = false;
                             break;
                         }
                     }
                 }
-                if (rowComplete) {
-                    break;
+                if (someOneIsVictorious) {
+                    return new GameResult(true,firstCharacter);
                 }
             }
-            if(rowComplete)
-                return new GameResult(true,firstCharacter);
+          
 
-            boolean  colComplete=true;
+            someOneIsVictorious=true;
 
             for(int i=0;i<3;i++) {
                 firstCharacter = board1.getcells(0, i);
-                colComplete = firstCharacter != null;
+                someOneIsVictorious = firstCharacter != null;
                 if (firstCharacter != null) {
                     for (int j = 1; j < 3; j++) {
                         if (!firstCharacter.equals(board1.getcells(j, i))) {
-                            colComplete = false;
+                            someOneIsVictorious = false;
                             break;
                         }
                     }
                 }
-                if (colComplete) {
-                    break;
+                if (someOneIsVictorious) {
+                    return new GameResult(true,firstCharacter);
                 }
             }
-            if(colComplete)
-                return new GameResult(true,firstCharacter);
+
+
 
             firstCharacter=board1.getcells(0,0);
             boolean  diagComplete=firstCharacter!=null;

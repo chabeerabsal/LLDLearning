@@ -45,6 +45,7 @@ public class RuleEngine {
                 }
                 if (someOneIsVictorious) {
                     return new GameResult(true,firstCharacter);
+                    //Tic-tac-toe- is very hard
                 }
             }
 

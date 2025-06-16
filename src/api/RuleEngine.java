@@ -49,6 +49,8 @@ public class RuleEngine {
                 }
             }
 
+            //SOLID pricibles
+
 
 
             firstCharacter=board1.getcells(0,0);

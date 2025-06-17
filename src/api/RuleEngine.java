@@ -53,6 +53,7 @@ public class RuleEngine {
 
 
 
+
             firstCharacter=board1.getcells(0,0);
             boolean  diagComplete=firstCharacter!=null;
 

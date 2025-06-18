@@ -47,6 +47,7 @@ public class RuleEngine {
                     return new GameResult(true,firstCharacter);
                     //Tic-tac-toe- is very hard
                 }
+
             }
 
             //SOLID pricibles
